@@ -41,7 +41,6 @@ const Login = (props) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
   };
 
-
   const validatePasswordHandler = () => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
@@ -54,25 +53,16 @@ const Login = (props) => {
     event.preventDefault();
     props.onLogin(emailState.value, passwordState.value);
   };
-
-
   const emailIsValid = emailState.isValid;
-  const passwordIsValid=passwordState.isValid;
-
-
+  const passwordIsValid = passwordState.isValid;
   useEffect(() => {
-    console.log("Hello1")
     const identifier = setTimeout(() => {
       setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
     return () => {
       clearTimeout(identifier);
-    console.log("Hello2")
-
     };
   }, [emailIsValid, passwordIsValid]);
-
-  
 
   return (
     <Card className={classes.login}>
